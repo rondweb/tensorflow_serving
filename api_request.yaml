@@ -1,0 +1,6 @@
+url: http://localhost:8501/v1/models/linear_model:predict
+method: post
+header:
+  Content-Type: application/json
+data:
+  instances: [[0]]
