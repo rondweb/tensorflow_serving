@@ -1,5 +1,5 @@
-Setting up your machine
-This is a one-time setup activity.
+# Setting up your machine
+## This is a one-time setup activity.
 
 To start our local server we need a TensorFlow Serving instance on our local machine. Instead of downloading and installing all the necessary libraries, we shall use the recommended way of using Docker.
 
@@ -11,28 +11,33 @@ Once you download Docker on your system from here, go ahead and finish the insta
 
 Once the installation is finished successfully, go to Command Prompt (Mac and Linux users, kindly use appropriate tools) and type
 
-Installing docker image
+# Installing docker image
 
+```sh
 docker pull tensorflow/serving
+```
+
 
 That’s it! Let’s now proceed to deploy our model.
 
-Deploying your Keras Model on localhost
+#Deploying your Keras Model on localhost
 What if I told you that deploying the model is just one line of command script.
 
 All you need is the absolute path to your ‘linear_model’ folder. Do not forget to use the absolute path as this would cause errors that you would need to spend time and break your head to solve.
 
 My ‘linear_model’ was saved inside ‘D:/my_own_models/’. So my command looked like:
 
-
+```sh
 docker run -p 8038:8501 --mount type=bind,source=I:\PROJECTS\PAPERS\tensorflow_serving\linear_model,target=/models/linear_model -e MODEL_NAME=linear_model -t tensorflow/serving
+```
 
 This is all a single line. For your subsequent models, you need to just change your ‘source’ path. Changing your ‘target’ and MODEL_NAME is optional, but, of course, necessary based on the context.
 
 Now let us try to understand what the above command script indicates. The generic form of this script is
 
+```sh
 docker run -p {LOCAL_PORT}:8501 — mount type=bind,source={ABSOLUTE_PATH},target=/models/{MODEL_NAME} -e MODEL_NAME={MODEL_NAME} -t tensorflow/serving
-
+```
 {LOCAL_PORT}: This is the local port of your machine, so make sure you do not have anything else running there. We are mapping it to the 8501 port exposed for REST API calls by TensorFlow Serving
 
 {ABSOLUTE_PATH}: This is the absolute path for your model. This tells the TensorFlow Serving where your model is located at (obviously).
@@ -41,7 +46,9 @@ docker run -p {LOCAL_PORT}:8501 — mount type=bind,source={ABSOLUTE_PATH},targe
 
 Once you see the below message in your command window, your model has been hosted successfully. You can also see a container running successfully in your Docker dashboard.
 
+```sh
 [evhttp_server.cc : 238] NET_LOG: Entering the event loop …
+```
 
 Testing our Model
 I used Postman for testing my queries, but you can use any form of API calls.
@@ -62,12 +69,13 @@ Ensure that your JSON key is ‘instances’ and your values are inside an array
 Remember, that we created a model to predict y = 2x + 1 which means for input value 0, our prediction should have value 1 (or close to it).
 
 Let’s send our query. The response looks like:
-
+```sh
 {
      "predictions": [[
           0.999998748
      ]]
 }
+```
 
 Well, that looks pretty much like 1 to me. Play around with your model by making POST queries.
 
