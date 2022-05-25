@@ -1,4 +1,4 @@
-# Setting up your machine
+# Serving Tensorflow models over the web using RestAPI
 ## This is a one-time setup activity.
 
 To start our local server we need a TensorFlow Serving instance on our local machine. Instead of downloading and installing all the necessary libraries, we shall use the recommended way of using Docker.
