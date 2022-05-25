@@ -25,7 +25,7 @@ All you need is the absolute path to your ‘linear_model’ folder. Do not forg
 My ‘linear_model’ was saved inside ‘D:/my_own_models/’. So my command looked like:
 
 
-docker run -p 8038:8501 --mount type=bind,source=I:\PROJECTS\PAPERS\tensorflow_serving\linear_model,target=/models/linear_model -e MODEL_NAME=linear_model -t tensorflow/serving
+docker run -t --rm -p 8501:8501 --mount type=bind,source=I:\PROJECTS\tensorflow_serving\linear_model,target=/models/linear_model -e MODEL_NAME=linear_model -t tensorflow/serving
 
 This is all a single line. For your subsequent models, you need to just change your ‘source’ path. Changing your ‘target’ and MODEL_NAME is optional, but, of course, necessary based on the context.
 
