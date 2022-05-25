@@ -85,3 +85,5 @@ We were able to create a model from scratch and deploy it on our local server. T
 As I previously mentioned, however, you won’t be able to make calls to this model apart from Postman (or similar tools). How to overcome that? I shall cover that in a separate post as this is already becoming too long.
 
 If you have reached here, thanks for reading. If you have any queries, suggestions or comments, please feel free to comment on this post. This is my first blog on Machine Learning and I would gladly appreciate any and all feedback.
+
+Reference: https://towardsdatascience.com/serving-keras-models-locally-using-tensorflow-serving-tf-2-x-8bb8474c304e
